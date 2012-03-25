@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Breathing Strobe Page</title>
+  <meta charset="utf-8">
+  <script type="text/javascript">
+  	var t = 0;
+  	var i;
+    function init() {
+    	i = setInterval(pulseBG, 10);
+    }
+    
+    function bodyClick()  {
+    	clearInterval(i);
+    }
+    
+    function pulseBG()  {
+    	var y = truncate((127.5 * Math.sin( ((2*Math.PI)/4000)*t + ((3*Math.PI)/2))) + 127.5);
+		if ( t >= 4000)
+			y = 0;
+		if ( y < 15 )
+			y = 0;
+		document.bgColor = "#"+(y).toString(16)+(y).toString(16)+(y).toString(16);
+		
+		console.log(y);
+		t += 10;
+		if ( t >= 5000 ) {
+			t = 0;
+		}
+		
+	}
+	
+	function truncate(_value)
+	{
+		if (_value<0) return Math.ceil(_value);
+		else return Math.floor(_value);
+	}
+  </script>
+</head>
+<body onload="init()" onclick="bodyClick()" bgcolor="Black">
+  <h1>Breathing Strobe Page</h1>
+  <p id="msg">Page to test a strobe that beats at as similar rate to that of the human heart (ex. 12-20 breaths per minute)
+</body>
+</html>
