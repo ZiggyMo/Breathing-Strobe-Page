@@ -15,14 +15,11 @@
     }
     
     function pulseBG()  {
-    	var y = truncate((127.5 * Math.sin( ((2*Math.PI)/4000)*t + ((3*Math.PI)/2))) + 127.5);
-		if ( t >= 4000)
-			y = 0;
-		if ( y < 15 )
+    	var y = truncate((127.5 * Math.sin( ((2*Math.PI)/4500)*t + ((3*Math.PI)/2))) + 127.5);
+		if ( t >= 4500 || y <= 16 )
 			y = 0;
 		document.bgColor = "#"+(y).toString(16)+(y).toString(16)+(y).toString(16);
 		
-		console.log(y);
 		t += 10;
 		if ( t >= 5000 ) {
 			t = 0;
